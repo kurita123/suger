@@ -15,15 +15,17 @@ class TopController extends Controller
 
     public function index(Request $request){
         $sort = $request->sort;
+        //sortの値が無い場合の処理
         if (is_null($sort)) {
             $sort = 'id';
            }
-        if($sort =='evaluation'){
+        //並び替え
+        if($sort =='evaluation'){ //評価順
         $recipes = Recipe::orderBy($sort,'desc')->Paginate(12);
-        }elseif($sort == 'id'){
+        }elseif($sort == 'id'){ //投稿が古い順
+        $recipes = Recipe::orderBy($sort,'desc')->Paginate(12);
+        }else{ //投稿が新しい順
         $recipes = Recipe::orderBy($sort,'asc')->Paginate(12);
-        }else{
-        $recipes = Recipe::orderBy($sort,'desc')->Paginate(12);
         };
       
         return view('top',compact('sort','recipes'));

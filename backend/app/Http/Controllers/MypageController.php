@@ -14,24 +14,28 @@ class MypageController extends Controller
         $this->middleware('auth');
     }
 
-    public function mypage(Request $request){
+    public function mypage(Request $request)
+    {
         $user_id  = Auth::id();
-        $name = DB::table('users')->where('id',$user_id)->get('name');
-        $recipes = DB::table('recipes')->where('user_id',$user_id)
+        //user_idから名前を検索
+        $name     = DB::table('users')->where('id',$user_id)->get('name');
+        //user_idからレシピを検索
+        $recipes  = DB::table('recipes')->where('user_id',$user_id)
                                        ->paginate(12);;
 
         return view('mypage.mypage',compact('recipes','name'));
     }
 
-    public function recipe(Request $request){
+    public function recipe(Request $request)
+    {
         $id = $request->id;
-
+        //idからレシピ検索
         $recipes = DB::table('recipes')->where('id',$id)->get();
-
+        //user_id取得
         foreach($recipes as $val){
             $users_id[$val->id] = $val ->user_id;
         }
-        
+        //usernameのみ取得
         $name = DB::table('users')->where('id',$users_id)->get('name');
         
         return view('mypage.recipeuser',compact('recipes','name'));
@@ -39,21 +43,23 @@ class MypageController extends Controller
 
     public function change(Request $request){
         $user_id  = Auth::id();
-        $id = $request->id;
-
-        $recipes = DB::table('recipes')->where('id',$id)->get();
-        
-        $name = DB::table('users')->where('id',$user_id)->get('name');
+        $id       = $request->id;
+        //レシピからid検索
+        $recipes  = DB::table('recipes')->where('id',$id)->get();
+        //ユーザーの名前取得
+        $name     = DB::table('users')->where('id',$user_id)->get('name');
         
         return view('mypage.recipechange',compact('recipes','name','id'));
     }
 
-    public function complete(Request $request){
+    public function complete(PostRequest $request){
         $user_id  = Auth::id();
-        $id = $request->id;
-        $name = $request->name;
-        $path = $request->file('imgpath')->store('public/img');
-        $recipes = [
+        $id       = $request->id;
+        $name     = $request->name;
+        //画像保管
+        $path     = $request->file('imgpath')->store('public/img');
+        //更新内容格納
+        $recipes  = [
             'user_id'  => $user_id,
             'c_name'   => $request->c_name,
             't_suger'  => $request->t_suger,
@@ -66,16 +72,15 @@ class MypageController extends Controller
         //DB保存
         DB::table('recipes')->where('id',$id)->update($recipes);
 
-        return view('mypage.recipecomplete',compact('name'));
+        return view('mypage.recipecomplete',compact('name','id'));
     }
 
     public function delete(Request $request)
     {
         $name = $request->name;
+        //削除実行
         DB::table('recipes')->where('id',$request->id)->delete();
 
         return view('mypage.delete',compact('name'));
-
-        // return redirect()->action('MypageController@mypage');
     }
 }

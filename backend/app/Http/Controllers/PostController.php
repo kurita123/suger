@@ -17,17 +17,21 @@ class PostController extends Controller
 
     public function index(Request $request){
 
-        return view('post');
+        return view('post.post');
     }
 
     public function complete(PostRequest $request)
     {
+        //二重送信防止
+        $request->session()->regenerateToken();
         //入力情報
-        $user_id  = Auth::id();
-        $c_name = $request->c_name;
-        $path = $request->file('imgpath')->store('public/img');
-        $recipes[] = array();
+        $user_id    = Auth::id();
+        $c_name     = $request->c_name;
+        //画像保管
+        $path       = $request->file('imgpath')->store('public/img');
+        $recipes[]  = array();
         $recipes    = new Recipe();
+        //投稿内容保存
         $recipes ->create ([
             'user_id'  => $user_id,
             'c_name'   => $request->c_name,
@@ -38,6 +42,6 @@ class PostController extends Controller
             'imgpath'  => str_replace('public/img/','',$path),
         ]);
                                 
-        return view('postcomplete');
+        return view('post.postcomplete');
     }
 }

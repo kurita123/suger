@@ -15,16 +15,17 @@
                     <span style="color:red">並び替え</span>
                     </li>
                     <li class="nav-list-item">
-                    <a href="/top?sort=created_at">投稿日が新しい順</a>
+                    <a href="/home?sort=created_at">投稿日が新しい順</a>
                     </li>
                     <li class="nav-list-item">
-                    <a href="/top?sort=id">投稿日が古い順</a>
+                    <a href="/home?sort=id">投稿日が古い順</a>
                     </li>
                     <li class="nav-list-item">
-                    <a href="/top?sort=evaluation"> 評価の高い順</a>
+                    <a href="/home?sort=evaluation"> 評価の高い順</a>
                     </li>
                 </ul>
                 <div class="d-flex flex-row flex-wrap">
+                    <!-- レシピ詳細 -->
                     @foreach($recipes as $recipe)
                     <div class="col-xs-6 col-sm-6 col-md-4">
                         <div class="myrecipe">

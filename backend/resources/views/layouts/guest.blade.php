@@ -71,6 +71,7 @@
         </li>
     </ul>
     </header>
+    <!-- main -->
     <div class="content">
         @yield('content')　
     </div>

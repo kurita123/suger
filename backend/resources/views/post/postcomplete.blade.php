@@ -10,7 +10,7 @@
                 <div class="panel-body">
                     <div class="text-center">
                         <h2>投稿しました。</h2>
-                        <form action="mypage/mypage" method="post">
+                        <form action="mypage" method="post">
                         @csrf
                         <input type="submit" value="詳細" class= 'btn-lg btn-primary'>
                     </div>

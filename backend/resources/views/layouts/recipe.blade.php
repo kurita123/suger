@@ -50,7 +50,7 @@
     .button form { display: inline-block; margin:0px 20px;}
     img.inrecipe{width:100%; display: block; margin: 0 auto; height: 200px; object-fit: cover;}
     .table-css tr th { background: #FFFFCC; width:200px;}
-    .table-css tr td { width:80%; }
+    .table-css tr td { width:80%; padding-right:120px;}
     </style>
 
 </head>
@@ -70,7 +70,9 @@
             <li class="nav-list-item">
             <a href="{{ route('mypage') }}">Mypage</a>
             </li>
-            <li class="nav-list-item">Suger</li>
+            <li class="nav-list-item">
+            <a href="{{ route('inquiry') }}">Inquiry</a>
+            </li>
             <li class="nav-list-item">
             <a href="{{ route('logout') }}"
                 onclick="event.preventDefault();
@@ -88,11 +90,11 @@
         <div class="row" id="content">
             <div class="d-flex flex-row flex-wrap">
                 <div class="col-md-9">
-                <!-- コンテンツ -->
+                <!-- main -->
                 @yield('content')
                 </div>
             <div class="col-md-3">
-            <!-- サイドバー -->
+            <!-- sub -->
             @include('layouts.sub')
             </div>
         </div>

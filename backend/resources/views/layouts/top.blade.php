@@ -58,7 +58,9 @@
             <li class="nav-list-item">
             <a href="{{ route('mypage') }}">Mypage</a>
             </li>
-            <li class="nav-list-item">Suger</li>
+            <li class="nav-list-item">
+            <a href="{{ route('inquiry') }}">Inquiry</a>
+            </li>
             <li class="nav-list-item">
             <a href="{{ route('logout') }}"
                 onclick="event.preventDefault();
@@ -76,11 +78,11 @@
         <div class="row" id="content">
             <div class="d-flex flex-row flex-wrap">
                 <div class="col-md-9">
-                <!-- コンテンツ -->
+                <!-- main -->
                 @yield('content')
                 </div>
             <div class="col-md-3">
-            <!-- サイドバー -->
+            <!-- sub -->
             @include('layouts.sub')
             </div>
         </div>

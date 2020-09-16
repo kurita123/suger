@@ -9,34 +9,39 @@ use App\Models\Review;
 
 class HomeController extends Controller
 {   
-    public function index(Request $request){
+    public function index(Request $request)
+    {
+        //並び替え変数
         $sort = $request->sort;
         if (is_null($sort)) {
             $sort = 'id';
-           }
-        if($sort =='evaluation'){
+        }
+        //並び替え
+        if($sort =='evaluation'){ //評価順
         $recipes = Recipe::orderBy($sort,'desc')->Paginate(12);
-        }elseif($sort == 'id'){
+        }elseif($sort == 'id'){ //投稿が古い順
+        $recipes = Recipe::orderBy($sort,'desc')->Paginate(12);
+        }else{ //投稿が新しい順
         $recipes = Recipe::orderBy($sort,'asc')->Paginate(12);
-        }else{
-        $recipes = Recipe::orderBy($sort,'desc')->Paginate(12);
         };
 
         return view('home',compact('sort','recipes'));
     }
 
-    public function recipe(Request $request){
+    public function recipe(Request $request)
+    {
         $id = $request->id;
-
+        //レシピから該当結果を検索
         $recipes = DB::table('recipes')->where('id',$id)->get();
-
+        //検索結果のuser_id取得
         foreach($recipes as $val){
             $users_id[$val->id] = $val ->user_id;
         }
-        
-        $name = DB::table('users')->where('id',$users_id)->get('name');
+        //検索結果からname取得
+        $name    = DB::table('users')->where('id',$users_id)->get('name');
+        //検索結果のレビュー取得
         $reviews = Review::with('user')->where('recipe_id',$id)->Paginate(5);
 
-        return view('recipegest',compact('recipes','reviews','name'));
+        return view('recipe.recipegest',compact('recipes','reviews','name'));
     }
 }

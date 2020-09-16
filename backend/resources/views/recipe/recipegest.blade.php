@@ -7,10 +7,12 @@
     <div class="row">
         <div id="main">
             <div class = "name">
+            <!-- ログインユーザーネーム -->
             @foreach($name as $nam)
                 <p>{{$nam->name}}さんのレシピ</p>
             @endforeach
             </div>
+                <!-- レシピ詳細 -->
                 @foreach($recipes as $recipe)
             <div class="myrecipe">
                 <div class="myrecipe-coo">
@@ -28,21 +30,22 @@
                 </div>
                 @endforeach
                 <p style="font-size:1.4em">レビュー評価一覧</p>
+                <!-- レビュー詳細 -->
                 @foreach($reviews as $review)
-                <table border=2 class="table-css">
-                <tr>
-                    <th>名前</th>
-                    <td>{{$review->user->name}}</td>
-                </tr>
-                <tr>
-                    <th>評価</th>
-                    <td><span style="color:#ffcc00;font-size: 20px;">★</span>{{$review->stars}}</td>
-                </tr>
-                <tr>
-                    <th>コメント</th>
-                    <td>{{$review->comment}}</td><br>
-                </tr>
-                </table>
+                    <table border=2 class="table-css">
+                    <tr>
+                        <th>名前</th>
+                        <td>{{$review->user->name}}</td>
+                    </tr>
+                    <tr>
+                        <th>評価</th>
+                        <td><span style="color:#ffcc00;font-size: 20px;">★</span>{{$review->stars}}</td>
+                    </tr>
+                    <tr>
+                        <th>コメント</th>
+                        <td>{{$review->comment}}</td><br>
+                    </tr>
+                    </table>
                 @endforeach
                 <div style="text-center; width: 150px;margin: 20px auto;">
                     {{ $reviews->appends(request()->input())->links() }} 

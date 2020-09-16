@@ -71,11 +71,11 @@
         <div class="row" id="content">
             <div class="d-flex flex-row flex-wrap">
                 <div class="col-md-9">
-                <!-- コンテンツ -->
+                <!-- main -->
                 @yield('content')
                 </div>
             <div class="col-md-3">
-            <!-- サイドバー -->
+            <!-- sub -->
             @include('layouts.sub')
             </div>
         </div>

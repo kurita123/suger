@@ -36,6 +36,7 @@
     .recipe input{width:70%;text-align: center;}
     textarea{width:70%;}
     img.inrecipe{width:50%; display: block; margin: 0 auto; height:auto; object-fit: cover;}
+    img.inrecip{width:50%; display: block; margin: 0 auto; height:300px; object-fit: cover;}
     p {margin:0px 0 0 0;}
     .myrecipe{color: #4c4c4c; font-weight: bold; text-align: center; margin-top: 24px; padding: 24px 8px; font-size: 1.1em; background-color: #fefefe;}
     .name {text-align:center; font-size:2em; margin:20px 0px;}
@@ -47,6 +48,9 @@
     .myrecipe-su{color: #4c4c4c; font-weight: bold; text-align: center; padding: 24px 8px; font-size: 1.1em; background-color: #fefefe;}
     .button {text-align:center;margin:10px 0px}
     .button form { display: inline-block; margin:0px 20px;}
+    .text-center {margin:20px 0;}
+    .text-css tr th { background: #FFFFCC; width:200px; text-align:center;}
+    .text-css td { width:80%;}
     </style>
 
 </head>
@@ -67,7 +71,9 @@
         <li class="nav-list-item">
         <a href="{{ route('post') }}">Post</a>
         </li>
-        <li class="nav-list-item">Suger</li>
+        <li class="nav-list-item">
+        <a href="{{ route('inquiry') }}">Inquiry</a>
+        </li>
         <li class="nav-list-item">
         <a href="{{ route('logout') }}"
             onclick="event.preventDefault();
@@ -81,6 +87,7 @@
         </li>
     </ul>
     </header>
+    <!-- main -->
     <div class="content">
         @yield('content')　
     </div>

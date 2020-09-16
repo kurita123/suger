@@ -20,10 +20,11 @@
                     <a href="/top?sort=id">投稿日が古い順</a>
                     </li>
                     <li class="nav-list-item">
-                    <a href="/top?sort=evaluation"> 評価の高い順</a>
+                    <a href="/top?sort=evaluation">評価の高い順</a>
                     </li>
                 </ul>
                 <div class="d-flex flex-row flex-wrap">
+                    <!-- レシピ詳細 -->
                     @foreach($recipes as $recipe)
                     <div class="col-xs-6 col-sm-6 col-md-4">
                         <div class="myrecipe">
