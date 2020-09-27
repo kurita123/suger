@@ -32,12 +32,12 @@
                     <img src="{{ asset('/storage/img/'.$recipe->imgpath)}}" alt=""><br><br>
                 </div>
                 <div class="myrecipe-su">
-                    <span style="color:red">材料</p></span><p>{!! nl2br(e($recipe->material)) !!}</p><br>
-                    <span style="color:red">作り方</p></span><p>{!! nl2br(e($recipe->recipe)) !!}</p><br>
-                    <span style="color:red">糖質量</p></span><p>{{$recipe->t_suger}}g</p><br>
-                    <span style="color:red">１人前の量</p></span><p>{{$recipe->amount}}</p><br>
-                    <span style="color:red">平均評価</p></span><span style="color:#ffcc00;font-size: 20px;">★</span>{{$recipe->evaluation}}<br><br>
-                    <span style="color:#33CCCC">あなたの評価</span></p>
+                    <p><span style="color:red">材料</p></span><p>{!! nl2br(e($recipe->material)) !!}</p><br>
+                    <p><span style="color:red">作り方</p></span><p>{!! nl2br(e($recipe->recipe)) !!}</p><br>
+                    <p><span style="color:red">糖質量</p></span><p>{{$recipe->t_suger}}g</p><br>
+                    <p><span style="color:red">１人前の量</p></span><p>{{$recipe->amount}}</p><br>
+                    <p><span style="color:red">平均評価</p></span><span style="color:#ffcc00;font-size: 20px;">★</span>{{$recipe->evaluation}}<br><br>
+                    <p><span style="color:#33CCCC">あなたの評価</span></p>
                     <form action="review" mecthod="post">
                     @csrf
                     <!-- 星評価 -->
@@ -50,6 +50,7 @@
                     </span>
                     <span style="color:#33CCCC"><p>コメント</p></span>
                     <input type="hidden" name="recipe_id" value="{{$recipe->id}}">
+                    <input type="hidden" name="user_id" value="{{$recipe->user_id}}">
                     <textarea type="text"  name="comment" rows="10" >{{ old('comment') }}</textarea><br>
                     <div class="button">
                         <input type="submit" value="確認" class= 'btn-lg btn-primary'>

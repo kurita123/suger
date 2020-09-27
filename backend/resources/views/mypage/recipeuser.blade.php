@@ -34,6 +34,7 @@
                 <form action="recipechange" method="get">
                 @csrf
                     <input type="hidden" name="id" value="{{$recipe->id}}">
+                    <input type="hidden" name="user_id" value="{{$recipe->user_id}}">
                     <input type="submit" value="変更" class= 'btn-lg btn-primary'>
                 </form>
                 <!-- レシピ削除 -->
@@ -43,11 +44,11 @@
                     <input type="hidden" name="name" value="{{$nam->name}}">
                     <input type="submit" value="削除" class= 'btn-lg btn-primary'>
                 </form>
-                @endforeach
                 </div>
+            @endforeach
             </div>
-        @endforeach
         </div>
+        @endforeach
     </div>
 </div>
 @endsection

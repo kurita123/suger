@@ -33,10 +33,11 @@
                             <img src="{{ asset('/storage/img/'.$recipe->imgpath)}}" alt="" class="inrecipe"><br>
                             <p>糖質量 : {{$recipe->t_suger}}g</p>
                             <p>評価 : {{$recipe->evaluation}}</p>
-                            <form action="recipegest" method="get">
+                            <form action="recipegest" method="post">
                             @csrf
                             <input type="hidden" name="id" value="{{$recipe->id}}">
-                            <input type="submit" value="詳細" class= 'btn-lg btn-primary'><br>
+                            <input type="hidden" name="user_id" value="{{$recipe->user_id}}">
+                            <input type="submit" name="action" value="詳細" class= 'btn-lg btn-primary'><br>
                             </form>
                         </div>
                     </div>

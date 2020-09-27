@@ -13,7 +13,7 @@ Route::get('home', 'HomeController@index')->name('home');
 Route::post('home', 'HomeController@index');
 
 // 未ログインユーザーレシピ詳細
-Route::get('recipegest', 'HomeController@recipe');
+Route::post('recipegest', 'HomeController@recipe')->name('recipegest');
 
 // ログインユーザー投稿画面
 Route::get('post', 'PostController@index')->name('post');
@@ -32,7 +32,7 @@ Route::post('recipeuser', 'MypageController@recipe');
 Route::get('recipechange', 'MypageController@change');
 
 // 変更完了
-Route::post('changecomplete', 'MypageController@complete');
+Route::post('changecomplete', 'MypageController@complete')->name('complete');
 
 // 投稿レシピ削除
 Route::post('delete', 'MypageController@delete');

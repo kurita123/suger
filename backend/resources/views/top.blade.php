@@ -35,6 +35,7 @@
                             <form action="recipe" method="get">
                             @csrf
                             <input type="hidden" name="id" value="{{$recipe->id}}">
+                            <input type="hidden" name="user_id" value="{{$recipe->user_id}}">
                             <input type="submit" value="詳細" class= 'btn-lg btn-primary'><br>
                             </form>
                         </div>

@@ -14,15 +14,12 @@ use Illuminate\Validation\Rule;
 class RecipeController extends Controller
 {
     public function index(Request $request){
-        $id = $request->id;
+        $id      = $request->id;
+        $user_id = $request->user_id;
         //レシピ検索
         $recipes = DB::table('recipes')->where('id',$id)->get();
-        //レシピからユーザーid取得
-        foreach($recipes as $val){
-            $users_id[$val->id] = $val ->user_id;
-        }
         //ユーザーの名前取得
-        $name    = DB::table('users')->where('id',$users_id)->get('name');
+        $name    = DB::table('users')->where('id',$user_id)->get('name');
         //レビュー内容取得
         $reviews = Review::with('user')->where('recipe_id',$id)->Paginate(5);
 

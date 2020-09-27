@@ -44,9 +44,9 @@
                     <p>{{$recipe->evaluation}}</p><br>
                 </div>
             </div>
-        @endforeach
             <div class="recipe">
                 <input type="hidden" name="id" value="{{$id}}">
+                <input type="hidden" name="user_id" value="{{$recipe->user_id}}">
                 <p>料理名</p><input type="text" name="c_name" value="{{ old('c_name') }}">
                 <p>食材＆調味料</p><input type="text" name="material" value="{{ old('material') }}">
                 <p>総糖質量</p><input type="number" name="t_suger" min="1" max="30" value="{{ old('t_suger') }}">
@@ -56,6 +56,7 @@
                 <button class="btn btn-success">登録</button>
             </form>
             </div>
+        @endforeach
         </div>
     </div>
 </div>

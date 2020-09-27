@@ -29,20 +29,18 @@ class MypageController extends Controller
     public function recipe(Request $request)
     {
         $id = $request->id;
+        $user_id = $request->user_id;
         //idからレシピ検索
         $recipes = DB::table('recipes')->where('id',$id)->get();
-        //user_id取得
-        foreach($recipes as $val){
-            $users_id[$val->id] = $val ->user_id;
-        }
         //usernameのみ取得
-        $name = DB::table('users')->where('id',$users_id)->get('name');
+        $name = DB::table('users')->where('id',$user_id)->get('name');
         
         return view('mypage.recipeuser',compact('recipes','name'));
     }
 
-    public function change(Request $request){
-        $user_id  = Auth::id();
+    public function change(Request $request)
+    {
+        $user_id  = $request->user_id;
         $id       = $request->id;
         //レシピからid検索
         $recipes  = DB::table('recipes')->where('id',$id)->get();
@@ -52,15 +50,18 @@ class MypageController extends Controller
         return view('mypage.recipechange',compact('recipes','name','id'));
     }
 
-    public function complete(PostRequest $request){
-        $user_id  = Auth::id();
+    public function complete(PostRequest $request)
+    {
+        //二重送信防止
+        $request->session()->regenerateToken();
         $id       = $request->id;
         $name     = $request->name;
+        $user_id  = $request->user_id;
         //画像保管
         $path     = $request->file('imgpath')->store('public/img');
         //更新内容格納
         $recipes  = [
-            'user_id'  => $user_id,
+            'user_id'  => $request->user_id,
             'c_name'   => $request->c_name,
             't_suger'  => $request->t_suger,
             'material' => $request->material,
@@ -72,7 +73,7 @@ class MypageController extends Controller
         //DB保存
         DB::table('recipes')->where('id',$id)->update($recipes);
 
-        return view('mypage.recipecomplete',compact('name','id'));
+        return view('mypage.recipecomplete',compact('name','id','user_id'));
     }
 
     public function delete(Request $request)

@@ -33,8 +33,8 @@
                 <input type="hidden" name="name" value="{{$name}}">
                 <input type="hidden" name="email" value="{{$email}}">
                 <input type="hidden" name="comment" value="{{$comment}}">
-                <button type="submit" name="action" value="back" class='btn-lg btn-primary'>戻る</button>
-                <button type="submit" name="action" value="sent" class='btn-lg btn-primary'>送信</button>
+                <input type="submit" name="action" value="修正" class='btn-lg btn-primary'>
+                <input type="submit" name="action" value="送信" class='btn-lg btn-primary'>
             </div>
                 </form>
             </div>    

@@ -22,11 +22,11 @@
                     <img src="{{ asset('/storage/img/'.$recipe->imgpath)}}" alt=""><br><br>
                 </div>
                 <div class="myrecipe-su">
-                    <span style="color:red">材料</p></span>{{$recipe->material}}<br><br>
-                    <span style="color:red">作り方</p></span>{{$recipe->recipe}}<br><br>
-                    <span style="color:red">糖質量</p></span>{{$recipe->t_suger}}g<br><br>
-                    <span style="color:red">１人前の量</p></span>{{$recipe->amount}}<br><br>
-                    <span style="color:red">平均評価</p></span><span style="color:#ffcc00;font-size: 20px;">★</span>{{$recipe->evaluation}}<br><br>
+                    <p><span style="color:red">材料</p></span>{{$recipe->material}}<br><br>
+                    <p><span style="color:red">作り方</p></span>{{$recipe->recipe}}<br><br>
+                    <p><span style="color:red">糖質量</p></span>{{$recipe->t_suger}}g<br><br>
+                    <p><span style="color:red">１人前の量</p></span>{{$recipe->amount}}<br><br>
+                    <p><span style="color:red">平均評価</p></span><span style="color:#ffcc00;font-size: 20px;">★</span>{{$recipe->evaluation}}<br><br>
                 </div>
                 @endforeach
                 <p style="font-size:1.4em">レビュー評価一覧</p>

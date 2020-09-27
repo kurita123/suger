@@ -2,7 +2,8 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\User;
+use App\Models\User;
+use App\Models\Recipe;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
@@ -26,3 +27,18 @@ $factory->define(User::class, function (Faker $faker) {
         'remember_token' => Str::random(10),
     ];
 });
+
+$factory->define(App\Models\Recipe::class, function (Faker $faker) {
+    return [
+        'user_id' => 5,
+        'c_name' => $faker->name,
+        'material' => $faker->sentence(),
+        't_suger' => $faker->numberBetween(1,30),
+        'amount' => $faker->numberBetween(30,100),
+        'recipe' => $faker->sentence(),
+        'imgpath' => $faker->image,
+        'evaluation' => random_int(1,5),
+        'imgpath'  => 'yudetamago.jpg'
+    ];
+});
+

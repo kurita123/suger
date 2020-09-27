@@ -31,14 +31,12 @@ class HomeController extends Controller
     public function recipe(Request $request)
     {
         $id = $request->id;
+        $user_id = $request->user_id;
         //レシピから該当結果を検索
         $recipes = DB::table('recipes')->where('id',$id)->get();
-        //検索結果のuser_id取得
-        foreach($recipes as $val){
-            $users_id[$val->id] = $val ->user_id;
-        }
+        
         //検索結果からname取得
-        $name    = DB::table('users')->where('id',$users_id)->get('name');
+        $name    = DB::table('users')->where('id',$user_id)->get('name');
         //検索結果のレビュー取得
         $reviews = Review::with('user')->where('recipe_id',$id)->Paginate(5);
 

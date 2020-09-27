@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\InquiryRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Mail\ContactMail;
+use Mail;
 
 class InquiryController extends Controller
 {
@@ -28,9 +30,9 @@ class InquiryController extends Controller
 
     public function complete(Request $request)
     {
-        $contact = $request->all();
+        $contact =$request->except('action'); 
         //戻るボタンを押した際の処理
-        if($request->action === 'back'){
+        if($request->action === '修正'){
             return redirect()->route('inquiry')->withInput($contact);
         }
         //二重送信防止
@@ -40,7 +42,7 @@ class InquiryController extends Controller
         \Mail::send(new \App\Mail\ContactMail([
             'to'        => $request->email,  //お客様のメールアドレス
             'to_name'   => $request->name,  //お客様の名前
-            'from'      => 'kurikuri7890@gmail.com',  //Gmailアドレス
+            'from'      => 'kurikuriqwer@gmail.com',  //Gmailアドレス
             'from_name' => 'kurita',  //Gmailの表示名
             'subject'   => 'お問い合わせ受付完了のお知らせ',  //メールの件名
             'comment'   => $request->comment  //お問い合わせ内容
@@ -48,7 +50,7 @@ class InquiryController extends Controller
 
         // 自分に送るメール
         \Mail::send(new \App\Mail\ContactMail([
-            'to'        => 'kurikuri7890@gmail.com',  //Gmailアドレス
+            'to'        => 'kurikuriqwer@gmail.com',  //Gmailアドレス
             'to_name'   => 'kurita',  //Gmailの表示名
             'from'      => $request->email,  //お客様のメールアドレス
             'from_name' => $request->name, //お客様の名前

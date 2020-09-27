@@ -6,7 +6,6 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 
-
 class ReviewRequest extends FormRequest
 {
     public function authorize()
@@ -14,7 +13,7 @@ class ReviewRequest extends FormRequest
         return true;
     }
 
-    public function rules(Request $request)
+    public function rules()
     {
         return [
             'stars'   => 'required|integer|min:1|max:5',
