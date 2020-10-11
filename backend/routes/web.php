@@ -50,10 +50,10 @@ Route::get('search', 'SearchController@search');
 Route::get('guestsearch', 'SearchController@guestsearch')->name('guestsearch');
 
 // お問い合わせ
-Route::get('inquiry/inquiry', 'inquiryController@inquiry')->name('inquiry');
+Route::get('inquiry/inquiry', 'InquiryController@inquiry')->name('inquiry');
 
 // お問い合わせ内容確認
-Route::post('inquiry/inquiryconfirm', 'inquiryController@confirm');
+Route::post('inquiry/inquiryconfirm', 'InquiryController@confirm');
 
 // お問い合わせ完了
-Route::post('inquiry/inquirycomplete', 'inquiryController@complete');
+Route::post('inquiry/inquirycomplete', 'InquiryController@complete');
