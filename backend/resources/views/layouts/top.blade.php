@@ -49,7 +49,7 @@
 <!-- header -->
     <header>
         <h1 class="headline">
-            <a>糖質制限商品&レシピ集</a>
+            <a>糖質制限レシピ集</a>
         </h1>
         <ul class="nav-list">
             <li class="nav-list-item">
